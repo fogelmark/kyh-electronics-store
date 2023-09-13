@@ -4,13 +4,20 @@ import { BsCart } from 'react-icons/bs'
 import { useProductContext } from '../../context/productContext';
 import Skeleton from "react-loading-skeleton"
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useCartContext } from '../../context/cartContext';
+import { useCart } from '../../context/cartContext';
 
 
 
-const Card = ({product}: CardProps) => {
+const Card = ({ product }: CardProps) => {
 
   const { loading } = useProductContext()
+  const { cart, addToCart } = useCart()
+
+  const handleAddToCart = () => {
+    addToCart(product)
+    console.log(cart);
+  }
+
 
   const maxTitleLength = 25
 
@@ -21,10 +28,10 @@ const Card = ({product}: CardProps) => {
 
   return (
     <>
-      <div className="card shadow" style={{width: '15rem', height: '430px'}}>
+      <div className="card shadow" style={{ width: '15rem', height: '430px' }}>
         <Link to={`/products/${product.id}`}
-        className="image-container" 
-        style={{padding: '1rem', cursor: 'pointer'}}>
+          className="image-container"
+          style={{ padding: '1rem', cursor: 'pointer' }}>
           {
             loading ? (
               <Skeleton width={200} height={280} />
@@ -47,16 +54,16 @@ const Card = ({product}: CardProps) => {
             }
           </h5>
           <div className='d-flex align-items-center justify-content-between mt-auto'>
-             {
+            {
               loading ? (
                 <Skeleton containerClassName='flex-1' />
               ) : (
                 <>
                   USD {product.price}
-                  <BsCart size={20} style={{cursor: 'pointer'}} />
+                  <BsCart size={20} onClick={handleAddToCart} style={{ cursor: 'pointer' }} />
                 </>
-                )
-              } 
+              )
+            }
           </div>
         </div>
       </div>

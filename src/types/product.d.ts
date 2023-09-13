@@ -9,12 +9,3 @@ type Product = {
 type CardProps = {
   product: Product
 }
-
-type Cart = {
-  id: number;
-  userId: number;
-  products: {
-    productId: number;
-    quantity: number;
-  }[];
-}

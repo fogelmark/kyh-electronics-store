@@ -32,18 +32,18 @@ export const ProductProvider = ({ children }: ProductContextProviderProps) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get('https://fakestoreapi.com/products/category/electronics?limit=6');
-      setProducts(response.data);
-      setLoading(false);
-    } catch (error) {
-      setError('Error fetching products');
-      setLoading(false);
-    }
-  };
-  
-  fetchProducts();
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('https://fakestoreapi.com/products/category/electronics?limit=6');
+        setProducts(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Error fetching products');
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const contextValue: ProductContextType = {

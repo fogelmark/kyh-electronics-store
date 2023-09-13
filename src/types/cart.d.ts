@@ -1,11 +1,10 @@
-// type Cart = {
-//   id: number
-//   userId: number
-//   date: string
-//   products: [
-//     {
-//       productId: number
-//       quantity: number
-//     }
-//   ]
-// }
+type CartItem = {
+  product: Product;
+  quantity: number;
+};
+
+type Cart = {
+  items: CartItem[];
+  totalItems: number;
+  totalPrice: number;
+};
