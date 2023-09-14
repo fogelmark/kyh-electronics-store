@@ -11,12 +11,12 @@ import { useCart } from '../../context/cartContext';
 const Card = ({ product }: CardProps) => {
 
   const { loading } = useProductContext()
-  const { cart, addToCart } = useCart()
+  const { addToCart } = useCart()
 
   const handleAddToCart = () => {
-    addToCart(product)
-    console.log(cart);
-  }
+    console.log('Adding product to cart:', product);
+    addToCart(product);
+  };
 
 
   const maxTitleLength = 25

@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import ShoppingCart from '../ShoppingCart/ShoppingCart'
 
 const Navbar = () => {
   return (
@@ -14,6 +15,7 @@ const Navbar = () => {
             <NavLink className="nav-link" to="/products">Products</NavLink>
           </div>
         </div>
+        <ShoppingCart />
       </div>
     </nav>
   )

@@ -9,3 +9,4 @@ type Product = {
 type CardProps = {
   product: Product
 }
+

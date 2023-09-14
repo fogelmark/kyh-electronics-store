@@ -5,8 +5,6 @@ type ProductContextProviderProps = {
   children: ReactNode
 }
 
-
-
 type ProductContextType = {
   products: Product[];
   loading: boolean;

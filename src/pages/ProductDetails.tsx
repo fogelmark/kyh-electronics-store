@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import Skeleton from "react-loading-skeleton"
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from "axios"
+import { useCart } from "../context/cartContext"
 
 const Products = () => {
 
@@ -12,6 +13,15 @@ const Products = () => {
   const parsedProductId = parseInt(productId || "", 10);
   const { loading, setLoading } = useProductContext()
   const [product, setProduct] = useState<Product | null>(null)
+  const { cart, addToCart } = useCart()
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product)
+      console.log(product);
+      console.log(cart);
+    }
+  }
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -26,8 +36,7 @@ const Products = () => {
     };
 
     fetchProductDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [parsedProductId])
+  }, [parsedProductId, setLoading])
 
   return (
     <div className='my-5'>
@@ -57,7 +66,7 @@ const Products = () => {
               ) : (
                 <>
                   {product?.price} USD
-                  <BsCart size={20} style={{ cursor: 'pointer' }} />
+                  <BsCart size={20} style={{ cursor: 'pointer' }} onClick={handleAddToCart} />
                 </>
               )}
             </div>
