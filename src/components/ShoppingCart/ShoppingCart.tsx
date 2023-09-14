@@ -1,16 +1,30 @@
-import { BsCart } from 'react-icons/bs'
 import './ShoppingCart.scss';
+import { useCart } from '../../context/cartContext';
+import CartProduct from './CartProduct';
 
 const ShoppingCart = () => {
+
+  const { cart } = useCart()
+  console.log(cart);
+
   return (
-    <div className="dropdown">
-      <BsCart size={20} className="dropdown-toggle" type="button" data-bs-placement='bottom-end' data-bs-toggle="dropdown" aria-expanded="false" />
-      <ul className="dropdown-menu dropdown-menu-end">
-        <li><a className="dropdown-item" href="#">Action</a></li>
-        <li><a className="dropdown-item" href="#">Another action</a></li>
-        <li><a className="dropdown-item" href="#">Something else here</a></li>
-        <li><p className='dropdown-item'>hej</p></li>
-      </ul>
+    <div onClick={e => e.stopPropagation()}>
+      {cart.totalItems < 1 && (
+        <div className='p-2 text-center'>
+          Your cart is empty!
+        </div>
+      )}
+      {cart.items.map(item => <CartProduct key={'cart' + item.product.id} item={item} />)}
+      <div className="dropdown-divider"></div>
+      <div className="d-flex justify-content-between align-items-center p-2">
+        <div>
+          <p className='m-0'>Total Price: {cart.totalPrice}</p>
+        </div>
+        <div>
+          <button className='btn btn-warning'>Clear Cart</button>
+          <button className='btn btn-info ms-2'>Checkout</button>
+        </div>
+      </div>
     </div>
   )
 }

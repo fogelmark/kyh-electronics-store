@@ -10,6 +10,7 @@ type CartContextType = {
   cart: Cart;
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
+  // savedCart: string
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -22,17 +23,26 @@ export const CartProvider = ({ children }: CartContextProvider) => {
     totalPrice: 0,
   });
 
+  // const initialSavedCart = localStorage.getItem('cart') || '';
+  // const [savedCart, setSavedCart] = useState<string>(initialSavedCart);
+
   useEffect(() => {
     // Save cart data to local storage whenever it changes
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
+
+  // useEffect(() => {
+  //   // Save cart data to local storage whenever it changes
+  //   localStorage.setItem('cart', JSON.stringify(cart));
+  //   // Update savedCart whenever cart changes
+  //   setSavedCart(JSON.stringify(cart));
+  // }, [cart]);
 
   useEffect(() => {
     // Load cart data from local storage on component mount
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       setCart(JSON.parse(savedCart));
-      console.log('Cart: ', savedCart);
     }
   }, []);
 
@@ -83,6 +93,7 @@ export const CartProvider = ({ children }: CartContextProvider) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

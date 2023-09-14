@@ -16,6 +16,7 @@ type ProductContextType = {
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useProductContext = () => {
   const context = useContext(ProductContext);
   if (!context) {

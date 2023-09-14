@@ -8,3 +8,7 @@ type Cart = {
   totalItems: number;
   totalPrice: number;
 };
+
+type CartProductProps = {
+  item: CartItem
+}
