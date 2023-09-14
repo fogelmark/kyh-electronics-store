@@ -1,12 +1,20 @@
 type Product = {
   id: number
   title: string
-  image: string
   price: string
+}
+
+type ElectronicsProduct = Product & {
+  image: string
   description: string
+  category: string
+  rating: {
+    count: number
+    rate: number
+  }
 }
 
 type CardProps = {
-  product: Product
+  product: ElectronicsProduct
 }
 

@@ -4,8 +4,11 @@ import CartProduct from './CartProduct';
 
 const ShoppingCart = () => {
 
-  const { cart } = useCart()
-  console.log(cart);
+  const { cart, clearCart } = useCart()
+
+  const handleClearCart = () => {
+    clearCart()
+  }
 
   return (
     <div onClick={e => e.stopPropagation()}>
@@ -21,8 +24,7 @@ const ShoppingCart = () => {
           <p className='m-0'>Total Price: {cart.totalPrice}</p>
         </div>
         <div>
-          <button className='btn btn-warning'>Clear Cart</button>
-          <button className='btn btn-info ms-2'>Checkout</button>
+          <button className='btn btn-warning' onClick={handleClearCart}>Clear Cart</button>
         </div>
       </div>
     </div>

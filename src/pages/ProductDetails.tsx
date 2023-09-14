@@ -12,14 +12,12 @@ const Products = () => {
   const { productId } = useParams()
   const parsedProductId = parseInt(productId || "", 10);
   const { loading, setLoading } = useProductContext()
-  const [product, setProduct] = useState<Product | null>(null)
-  const { cart, addToCart } = useCart()
+  const [product, setProduct] = useState<ElectronicsProduct | null>(null)
+  const { addToCart } = useCart()
 
   const handleAddToCart = () => {
     if (product) {
       addToCart(product)
-      console.log(product);
-      console.log(cart);
     }
   }
 

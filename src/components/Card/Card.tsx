@@ -14,7 +14,6 @@ const Card = ({ product }: CardProps) => {
   const { addToCart } = useCart()
 
   const handleAddToCart = () => {
-    console.log('Adding product to cart:', product);
     addToCart(product);
   };
 
@@ -28,7 +27,7 @@ const Card = ({ product }: CardProps) => {
 
   return (
     <>
-      <div className="card shadow" style={{ width: '15rem', height: '430px' }}>
+      <div onClick={e => e.stopPropagation()} className="card shadow" style={{ width: '15rem', height: '430px' }}>
         <Link to={`/products/${product.id}`}
           className="image-container"
           style={{ padding: '1rem', cursor: 'pointer' }}>

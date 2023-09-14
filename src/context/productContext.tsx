@@ -6,11 +6,10 @@ type ProductContextProviderProps = {
 }
 
 type ProductContextType = {
-  products: Product[];
+  products: ElectronicsProduct[];
   loading: boolean;
   error: string | null;
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>
-  // fetchProductById: (productId: number) => Promise<Product | null>
+  setProducts: React.Dispatch<React.SetStateAction<ElectronicsProduct[]>>
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -26,7 +25,7 @@ export const useProductContext = () => {
 };
 
 export const ProductProvider = ({ children }: ProductContextProviderProps) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ElectronicsProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
