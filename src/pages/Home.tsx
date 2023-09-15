@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const Home = () => {
 
   const { products, loading } = useProductContext();
-  const displayedProducts = products.slice(3, 6)
+  const displayedProducts = products.slice(2, 6)
 
 
   return (
@@ -16,7 +16,7 @@ const Home = () => {
           BEST SELLERS THIS WEEK
         </h2>
         <div className='d-flex flex-wrap gap-5 justify-content-center'>
-          {loading && Array.from({ length: 3 }).map((_, index) => (
+          {loading && Array.from({ length: 4 }).map((_, index) => (
             <div key={index} className='card shadow' style={{ width: '15rem', height: '430px' }}>
               <div className='image-container' style={{ padding: '1rem', cursor: 'pointer' }}>
                 <Skeleton width={200} height={280} />
