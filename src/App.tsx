@@ -9,8 +9,8 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: 
-      <RootLayout />,
+      element:
+        <RootLayout />,
       children: [
         {
           index: true,
@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <>
-     <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </>
   )
 }
